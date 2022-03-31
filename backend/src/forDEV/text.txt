@@ -1,0 +1,4 @@
+super admin ha login qiladimi?
+adminni qushib turganda o'zgartirish kiritdik, admin telefon nomer emas balki email kiritadi,
+xuquqlar qanday beriladi
+admin login qilib kiradi, va worker yani usta qane ishlaydi, u ham login qilib kiradimi, worker ga qanday permission quyiladi
