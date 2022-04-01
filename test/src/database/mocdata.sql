@@ -32,7 +32,7 @@ insert into clients(client_status, client_fullname, client_phone_number_first, c
 (4, 'shodiyev abdulhakim', '998905073993', '998905063993', 'fgaadsfdsdsfasfdsffcc', 'bradsfdvd', 30, 3),
 (2, 'gulomov abdulatif', '998918504842', '998991457151', 'fgskgfjladnkf;ldfoipdfjkdlm', 'bradsfdvd', 30, 3);
 
-insert into orders(order_device_name, order_device_bug, client_id, company_id) values 
-('galaxy S99', 'glezdo', 3, 3),
-('galaxy A15', 'microfon', 1, 1),
-('galaxy S99', 'glezdo', 4, 2);
+insert into orders(order_device_name, order_device_bug, order_price, client_id, company_id) values 
+('galaxy S99', 'glezdo', '310.500', 62, 3),
+('galaxy A15', 'microfon', '310.500', 61, 1),
+('galaxy S99', 'glezdo', '310.500', 64, 4);

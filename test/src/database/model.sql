@@ -49,6 +49,7 @@ create table orders(
     order_device_bug text not null,
     order_get_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     order_over_time text,
+    order_price text not null,
     client_id int not null references clients(client_id),
     company_id int not null references company(company_id)
 );

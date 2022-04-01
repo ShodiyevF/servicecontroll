@@ -1,6 +1,6 @@
 const { permissionCtrl } = require("../../lib/permissions/ctrl");
 const { tokenchecker } = require("../../lib/tokenchecker");
-const { ordersModel, ordersGETModel } = require("./model")
+const { ordersGETModel, ordersPOSTModel, orderOneGETModel } = require("./model")
 
 const orderGETCtrl = async (req, res) => {
     try {
@@ -22,10 +22,33 @@ const orderGETCtrl = async (req, res) => {
 
 const orderPOSTCtrl = async (req, res) => {
     try {
-        const permissions = (await ordersModel(req.body.user_id)).rows
-        const write = permissions.find(el => el.permissions_names_id === 2 && el.action_id === 2)
+        const write = permissionCtrl(tokenchecker(req.body.token).id, 2, 2)
         if (write) {
-            return res.send('data')
+
+            const writeData = await ordersPOSTModel(req.body, req.body.client_id, req.body.company_id)
+            
+            return res.json({
+                status: 200,
+                message: 'data has write',
+            })
+        } else {
+            return res.send('you dont have any permissions')
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
+const orderOneGETCtrl = async (req, res) => {
+    try {
+        const write = permissionCtrl(tokenchecker(req.body.token).id, 1, 2)
+        if (write) {
+            return res.json({
+                status: 200,
+                message: 'data has sended',
+                data: await (await orderOneGETModel(req.body.client_id, req.body.company_id)).rows
+            })
         } else {
             return res.send('you dont have any permissions')
         }
@@ -36,5 +59,6 @@ const orderPOSTCtrl = async (req, res) => {
 
 module.exports = {
     orderGETCtrl,
-    orderPOSTCtrl
+    orderPOSTCtrl,
+    orderOneGETCtrl
 }
