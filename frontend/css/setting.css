@@ -1,0 +1,32 @@
+.companys_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.companys{
+    width: 150px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.company{
+    padding-top: 15px;
+}
+
+.right_main{
+    display: flex;
+}
+
+.logout_btn{
+    width: 100px;
+    height: 30px;
+    
+}
+
+.logout_btn_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
