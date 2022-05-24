@@ -35,12 +35,14 @@ elForm.addEventListener('submit', async (e) => {
         const tel2 = +(elInputTell.value)
         const tea = new RegExp('^998[389][012345789][0-9]{7}$', 'gi') 
         
+        
         if(fullname.length <= 36 && fullname.length === 1){
             elInputName.classList.add('error_border_color')
             elInputSurname.classList.add('error_border_color')
         } else if(elInputAge.value <= 200 && elInputAge.value === '' ? true : isNaN(+(elInputAge.value))) {
             elInputAge.classList.add('error_border_color')
-        } else if(elInputTel.value.length <= 13 && elInputTell.value.length <= 13 && elInputTel.value === '' ? true : isNaN(tel1) && elInputTell.value === '' ? true : isNaN(tel2)) {
+        } else if(elInputTel.value.length <= 13 && elInputTell.value.length <= 13 && elInputTel.value === '' ? true : isNaN(tel1) || elInputTell.value === '' ? true : isNaN(tel2)) {
+            console.log('asdsdgas');
             // && isNaN(elInputTel.value.match(tea)) ? elInputTel.value.match(tea).length : false && isNaN(elInputTell.value.match(tea)) ? elInputTell.value.match(tea).length : false
             elInputTel.classList.add('error_border_color')
             elInputTell.classList.add('error_border_color')
@@ -49,6 +51,7 @@ elForm.addEventListener('submit', async (e) => {
         } else if(elInputAbout.value.length <= 200 && elInputAbout.value === '') {
             elInputAbout.classList.add('error_border_color')
         } else {
+            console.log('asd');
             const res = await fetch('http://localhost:4000/userspost', {
             method: 'POST',
             headers: {

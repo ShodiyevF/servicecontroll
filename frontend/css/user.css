@@ -43,6 +43,7 @@
 }
 
 .user_order_item{
+    position: relative;
     width: 569px;
     border: 1px solid #A7A7A7;
     box-sizing: border-box;
@@ -69,17 +70,31 @@
     padding: 0;
 }
 
-
 .user_order_item_id_wrapper{
     margin-bottom: 11px;
 }
+
 .user_order_item_title_id{
     font-size: 25px;
     margin-right: 50px;
 }
+
 .user_order_item_body_id{
     font-size: 25px;
 }
+
+.user_order_item_status_wrapper{
+    position: absolute;
+    top: 60px;
+    right: 21.5px;
+    background-color: rgba(196, 196, 196, 20%);
+    display: flex;
+    flex-direction: column;
+    padding-top: 2px;
+    border-radius: 4px;
+}
+
+
 .user_order_item_status{
     margin-left: auto;
     padding: 5px 10px;
@@ -89,6 +104,28 @@
     font-weight: 500;
 }
 
+.user_order_item_status_border_none{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.user_order_item_status_btn{
+    width: 100%;
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #F5F5F5;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    text-align: right;
+    color: black;
+}
+
+.user_order_item_status_btn:last-child{
+    border: none;
+}
 
 .user_order_item_model_wrapper{
     margin-bottom: 11px;
@@ -339,4 +376,8 @@
 
 .display_none{
     display: none;
+}
+
+.user_order_item_status:hover{
+    cursor: pointer;
 }

@@ -22,14 +22,15 @@ const ordersGETModel = async (user_id, company_id) => {
     }
 }
 
-const ordersPOSTModel = async ({order_status, order_device_name, order_device_bug, order_over_time, order_price}, client_id, company_id) => {
+const ordersPOSTModel = async ({order_device_type, order_device_name, order_device_bug, order_over_time, order_price, order_about}, client_id, company_id) => {
     try {
         
         const user = await uniqRow('select * from clients where client_id = $1 and  company_id = $2', client_id, company_id)
         
         if (user.rows.length) {
-            const query = `insert into orders (order_status, order_device_name, order_device_bug, order_over_time, order_price, client_id, company_id) values ($1, $2, $3, $4, $5, $6, $7)`
-            await uniqRow(query, order_status, order_device_name, order_device_bug, order_over_time, order_price, client_id, company_id)
+            const query = `insert into orders (order_status, order_device_type,  order_device_name, order_device_bug, order_over_time, order_price, order_about, client_id, company_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)`
+            const overtime = new Date().getHours() + ':' +  new Date().getMinutes()
+            await uniqRow(query, 1, order_device_type, order_device_name, order_device_bug, order_over_time + "|" + overtime, order_price, order_about, client_id, company_id)
             return true
         } else {
             return false
@@ -42,15 +43,29 @@ const ordersPOSTModel = async ({order_status, order_device_name, order_device_bu
 
 const orderOneGETModel = async (client_id, company_id) => {
     try {
-        const query = `select * from orders where client_id = $1 and company_id = $2`
+        const query = `select * from orders where client_id = $1 and company_id = $2 order by order_id desc`
         return await uniqRow(query, client_id, company_id)
     } catch (error) {
         console.log(error.message); 
     }
 }
 
+const orderUPDATEStatusModel = async ({status, order_id, company_id}) => {
+    try {
+
+        const query = `
+        update orders set order_status = $1 where order_id = $2 and company_id = $3`
+        
+        const send = await uniqRow(query, status, order_id, company_id)
+        
+    } catch (error) {
+        console.log(error.message, 'ORDER UPDATE STATUS MODEL')
+    }
+}
+
 module.exports = {
     ordersGETModel,
     ordersPOSTModel,
-    orderOneGETModel
+    orderOneGETModel,
+    orderUPDATEStatusModel
 }

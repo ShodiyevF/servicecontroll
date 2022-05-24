@@ -45,11 +45,13 @@ drop table if exists orders cascade;
 create table orders(
     order_id int generated always as identity primary key,
     order_status smallint not null default 1,
+    order_device_type text not null,
     order_device_name text not null,
     order_device_bug text not null,
     order_get_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     order_over_time text,
     order_price text not null,
+    order_about text not null,
     client_id int not null references clients(client_id),
     company_id int not null references company(company_id)
 );

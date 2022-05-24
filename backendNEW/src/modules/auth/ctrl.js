@@ -6,8 +6,8 @@ const { login, register, recoverPassword } = require("./model")
 const loginCtrl = async (req, res) => {
     try {
         if(req.body && req.body.login && req.body.password && typeof req.body.password === "number" && req.body.password.toString().length <= 6){
-            const loginModel = login(req.body)
-            if(loginModel){
+            const loginModel = await login(req.body)
+            if(loginModel !== 400){
                 res.json({
                     status: 200,
                     message: 'user has been succesfyly logined !',

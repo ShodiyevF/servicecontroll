@@ -89,6 +89,7 @@
                             <h1 class="visually-hidden null_orders">Buyurtmalar mavjud emas !</h1>
                             <div class="user_orders">
                                 <ul class="user_order_list">
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -149,7 +150,7 @@
         const elDate = document.querySelector('.right_header_date')
 
         const classs = localStorage.getItem('route_class')
-        if (classs === 'left_item_users') {
+        if (classs === 'left_item_users' || classs === 'left_item_orders') {
             elItem.classList.add('left_main_item--active')
         }
 
@@ -188,7 +189,6 @@
         showTime();
     </script>
 </body>
-
 </html>
 
 

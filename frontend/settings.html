@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sozlamalar</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/setting.css">
 
@@ -100,13 +100,15 @@
 
     <script>
         const elLeftItem = document.querySelectorAll('.left_main_item')
+        const elItem = document.querySelector('.left_item_settings')
         const elTime = document.querySelector('.right_header_time')
         const elDate = document.querySelector('.right_header_date')
 
         const classs = localStorage.getItem('route_class')
-            if (classs === 'left_item_') {
-                elItem.classList.add('left_main_item--active')
-            }
+        if (classs === 'left_item_settings') {
+            console.log('asd');
+            elItem.classList.add('left_main_item--active')
+        }
         
         for (const i of elLeftItem) {
             i.onclick = (e) => {
